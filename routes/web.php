@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +37,10 @@ Route::middleware('checklogin')->group(function(){
     // Route::get('accounts',[AuthController::class,'addNewAccount'])->name('accounts.add');
     // Route::get('accounts',[AuthController::class,'editAccount'])->name('accounts.edit');
     // Route::get('accounts',[AuthController::class,'deleteAccount'])->name('accounts.delete');
+
+    Route::get('category',[CategoriesController::class, 'formAddCategory'])->name('form-add-category');
+    Route::post('category',[CategoriesController::class, 'addCategory'])->name('add-category');
+
     
     Route::get('profile',[AuthController::class, 'profile'])->name('profile');
     Route::post('edit-profile',[AuthController::class, 'editProfile'])->name('edit-profile');
