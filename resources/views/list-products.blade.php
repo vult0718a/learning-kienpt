@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+@if(session('alert'))
+<section class='alert alert-success'>{{session('alert')}}</section>
+@endif
     <div class="container mt-5">
       <div class="row tm-content-row">
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
@@ -172,95 +175,15 @@
             <div class="tm-product-table-container">
               <table class="table tm-table-small tm-product-table">
                 <tbody>
-                  <tr>
-                    <td class="tm-product-name">Product Category 1</td>
-                    <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
+                  <?php $i=1?>
+                  @foreach($categories as $key => $value)
+                  <tr class="nhay-dong">                  
+                  <td><a href="{{route('form-edit-category',['id'=>$value->id])}}" class="tm-product-name">
+                    <div style="height:100%;width:100%" class="nhay-dong">{{$value['name_category']}}</div>
+                  </a></td>
                   </tr>
-                  <tr>
-                    <td class="tm-product-name">Product Category 2</td>
-                    <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tm-product-name">Product Category 3</td>
-                    <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tm-product-name">Product Category 4</td>
-                    <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tm-product-name">Product Category 5</td>
-                    <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tm-product-name">Product Category 6</td>
-                    <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tm-product-name">Product Category 7</td>
-                    <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tm-product-name">Product Category 8</td>
-                    <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tm-product-name">Product Category 9</td>
-                    <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tm-product-name">Product Category 10</td>
-                    <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tm-product-name">Product Category 11</td>
-                    <td class="text-center">
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </tbody>
+                  @endforeach
+                  </tbody>
               </table>
             </div>
             <!-- table container -->
@@ -272,12 +195,4 @@
         </div>
       </div>
     </div>
-    <footer class="tm-footer row tm-mt-small">
-      <div class="col-12 font-weight-light">
-        <p class="text-center text-white mb-0 px-4 small">
-          Copyright &copy; <b>2018</b> All rights reserved. 
-          
-          Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
-        </p>
-      </div>
 @endsection
