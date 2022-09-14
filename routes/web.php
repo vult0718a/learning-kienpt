@@ -45,6 +45,8 @@ Route::middleware('checklogin')->group(function(){
     Route::get('edit-category',[CategoriesController::class, 'formEditCategory'])->name('form-edit-category');
     Route::post('edit-category/{id}',[CategoriesController::class, 'editCategory'])->name('edit-category');
     
+    Route::get('delete-category/{id}',[CategoriesController::class, 'deleteCategory'])->name('delete-category');
+
     Route::get('profile',[AuthController::class, 'profile'])->name('profile');
     Route::post('edit-profile',[AuthController::class, 'editProfile'])->name('edit-profile');
 });

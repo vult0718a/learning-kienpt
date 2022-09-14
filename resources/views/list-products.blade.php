@@ -181,6 +181,12 @@
                   <td><a href="{{route('form-edit-category',['id'=>$value->id])}}" class="tm-product-name">
                     <div style="height:100%;width:100%" class="nhay-dong">{{$value['name_category']}}</div>
                   </a></td>
+                  <td>
+                      <a href="{{route('delete-category', ['id'=>$value->id])}}" 
+                      onclick="confirm('Bạn có chắc muốn xóa loại sản phẩm ?') || event.stopImmediatePropagation()" class="tm-product-delete-link">
+                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                      </a>
+                    </td>
                   </tr>
                   @endforeach
                   </tbody>

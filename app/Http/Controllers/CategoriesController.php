@@ -40,4 +40,11 @@ class CategoriesController extends Controller
         $alert='Bạn đã sửa thành công loại sản phẩm!';
         return redirect()->route('list-products')->with('alert',$alert);
     }
+
+    public function deleteCategory($id){
+        $category = Category::find($id);
+        $category->delete();
+        $alert='Bạn đã xóa thành công loại sản phẩm!';
+        return redirect()->route('list-products')->with('alert',$alert);
+    }
 }
