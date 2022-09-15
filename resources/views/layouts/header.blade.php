@@ -69,8 +69,9 @@
                     </ul>
                     @if (Auth::check())
                     <ul class="navbar-nav">
-                        <li class="nav-item" style="display:flex;"><span style="color:white; margin-top:13px; margin-right:-20px;">{{auth()->user()->username}}</span>
+                        <li class="nav-item" style="display:flex;">
                             <a class="nav-link d-block" href="{{route('logout')}}">
+                            <span>{{auth()->user()->username}},</span>
                                  <b>Logout</b>
                             </a>
                         </li>
