@@ -39,7 +39,7 @@
                                 Products
                             </a>
                         </li>
-
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('show-list-accounts')}}">
                             <i class="far fa-file-alt"></i>

@@ -27,5 +27,29 @@ class ProductController extends Controller
         return redirect()->route('list-products')->with('alert',$alert);
     } 
     
-    
+    public function edit(Request $request){
+        $product = Product::find($request->get('id'));
+        $category = Category::all();
+        return view('edit-product',compact('product','category'));
+    }
+
+    public function update($id,Request $request){
+        $product = Product::find($id);
+        $product->name_product = $request->get('name_product');
+        $product->detail = $request->get('detail');
+        $product->price = $request->get('price');
+        $product->category_id = $request->get('category_id');
+        $product->stock = $request->get('stock');
+
+        $product->save();
+        $alert='Bạn đã sửa thành công loại sản phẩm!';
+        return redirect()->route('list-products')->with('alert',$alert); 
+    }
+
+    public function delete($id){
+        $product = Product::find($id);
+        $product->delete();
+        $alert='Bạn đã xóa thành công sản phẩm!';
+        return redirect()->route('list-products')->with('alert',$alert);
+    }
 }

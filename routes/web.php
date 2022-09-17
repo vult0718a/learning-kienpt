@@ -49,8 +49,10 @@ Route::middleware('checklogin')->group(function(){
 
     Route::get('add-product',[ProductController::class,'create'])->name('create-product');
     Route::post('add-product',[ProductController::class,'store'])->name('store-product');
-    
-    
+    Route::get('edit-product',[ProductController::class,'edit'])->name('edit-product');
+    Route::post('edit-product/{id}',[ProductController::class,'update'])->name('update-product');
+    Route::get('delete-product/{id}',[ProductController::class,'delete'])->name('delete-product');
+  
 });
 
 

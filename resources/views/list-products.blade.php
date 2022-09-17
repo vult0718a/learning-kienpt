@@ -28,13 +28,14 @@
                 @foreach($product as $value)
                   <tr>
                     <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">{{ $value->name_product }}</td>
+                    <td class="tm-product-name"><a href="{{route('edit-product',['id'=>$value->id])}}" class="tm-product-name">
+                    <div style="height:300%;width:300%" class="nhay-dong">{{ $value->name_product }}</div></a></td>
                     <td>{{ $value->price }}</td>
                     <td>{{ $value->stock }}</td>
                     <td>{{ $value->category ? $value->category->name_category : 'Khong co category' }}</td>
-
                     <td>
-                      <a href="#" class="tm-product-delete-link">
+                      <a href="{{route('delete-product', ['id'=>$value->id])}}" 
+                      onclick="confirm('Bạn có chắc muốn xóa sản phẩm ?') || event.stopImmediatePropagation()" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
                       </a>
                     </td>
