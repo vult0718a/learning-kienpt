@@ -77,10 +77,10 @@
                       required
                     />
                   </div>
-                  <div class="image form-group mt-3">
+                  <!-- <div class="image form-group mt-3">
                     <label>Add images</label>
                     <input type="file" class="form-control" required name="image">
-                  </div>
+                  </div> -->
                   <div class="form-group-login mt-4">
                     <button
                       type="submit"
