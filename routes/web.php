@@ -43,6 +43,7 @@ Route::middleware('admin')->group(function(){
 
 Route::middleware('checklogin')->group(function(){
     Route::get('profile',[AuthController::class, 'profile'])->name('profile');
+    Route::post('uploadAvatar',[AuthController::class,'uploadAvatar'])->name('upload-avatar');
     Route::post('edit-profile',[AuthController::class, 'editProfile'])->name('edit-profile');
     Route::get('delete-proflie',[AuthController::class,'deleteProfile'])->name('delete-profile');
     

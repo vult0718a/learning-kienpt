@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -101,6 +103,25 @@ class AuthController extends Controller
         $user->save();
         $alert='Bạn đã cập nhật thành công!';
         return redirect()->route('profile')->with('alert',$alert);
+    }
+
+    public function uploadAvatar(Request $request){
+        if($request->hasFile('image')){
+           $filename = $request->image->getClientOriginalName();
+           $this->deleteOldAvatar();
+           $request->image->storeAs('image',$filename,'public');
+           auth()->user()->update(['avatar'=>  $filename]);
+           $alert='Bạn đã cập nhật avatar thành công!';
+           return redirect()->route('profile')->with('alert',$alert);
+        }
+        $alert='Bạn chưa thể cập nhật avatar!';
+        return redirect()->route('profile')->with('alert',$alert);
+    }
+
+    protected function deleteOldAvatar(){
+        if(Auth::user()->avatar){
+            Storage::delete('/public/image/'.auth()->user()->avatar);
+           }
     }
 
     public function deleteProfile(){
