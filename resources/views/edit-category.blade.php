@@ -43,7 +43,7 @@
                       type="text"
                       class="form-control validate"
                       value="{{$category->detail}}"
-
+                      require
                     />
                   </div>
               <div class="col-12">

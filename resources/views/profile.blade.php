@@ -94,15 +94,16 @@
                         Update Your Profile
                     </button>
                     </div>
+                    
+                </form>
                     <div class="col-12">
-                    <button
+                    <a href="{{route('delete-profile')}}" onclick="confirm('Bạn có chắc muốn hủy tài khoản ?') || event.stopImmediatePropagation()" ><button
                         type="submit"
                         class="btn btn-primary btn-block text-uppercase"
                     >
                         Delete Your Account
-                    </button>
+                    </button></a>
                     </div>
-                </form>
                 </div>
             </div>
             </div>

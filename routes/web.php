@@ -34,14 +34,17 @@ Route::get('logout', [AuthController::class,'logout'])->name('logout');
 
 Route::middleware('admin')->group(function(){
     Route::get('accounts',[AuthController::class,'showListAccounts'])->name('show-list-accounts');
-    // Route::get('accounts',[AuthController::class,'addNewAccount'])->name('accounts.add');
-    // Route::get('accounts',[AuthController::class,'editAccount'])->name('accounts.edit');
-    // Route::get('accounts',[AuthController::class,'deleteAccount'])->name('accounts.delete');
+    Route::get('create-accounts',[AuthController::class,'createAccount'])->name('create-account');
+    Route::post('create-accounts',[AuthController::class,'storeAccount'])->name('store-account');
+    Route::get('edit-accounts',[AuthController::class,'editAccount'])->name('edit-account');
+    Route::post('update-accounts',[AuthController::class,'updateAccount'])->name('update-account');
+    Route::get('delete-accounts/{id}',[AuthController::class,'deleteAccount'])->name('delete-account');
 });
 
 Route::middleware('checklogin')->group(function(){
     Route::get('profile',[AuthController::class, 'profile'])->name('profile');
     Route::post('edit-profile',[AuthController::class, 'editProfile'])->name('edit-profile');
+    Route::get('delete-proflie',[AuthController::class,'deleteProfile'])->name('delete-profile');
     
     Route::get('list-products',[CategoriesController::class,'listProduct'])->name('list-products');
 
