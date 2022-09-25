@@ -7,6 +7,7 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- https://getbootstrap.com/ -->
     <script src="js/tooplate-scripts.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         Chart.defaults.global.defaultFontColor = 'white';
         let ctxLine,

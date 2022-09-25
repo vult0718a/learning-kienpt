@@ -30,7 +30,7 @@ class CategoriesController extends Controller
 
     public function formEditCategory(Request $request) {
         $category = Category::find($request->get('id'));
-        return view('category', compact('category'));
+        return view('edit-category', compact('category'));
     }
 
     public function editCategory($id,Request $request){

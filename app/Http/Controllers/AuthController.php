@@ -28,13 +28,13 @@ class AuthController extends Controller
     }
     public function login(Request $request){
         if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])){
-            return redirect()->route('profile');
+            return redirect()->route('home');
         }   
         $alert='Email hoặc mật khẩu không chính xác! Xin vui lòng thử lại!';
         return redirect()->route('show-form-login')->with('alert',$alert);
     }
 
-    public function showListAccounts(){
+    public function showListAccounts(Request $request){
             $users=User::all();
             return view('accounts',compact("users"));
     }

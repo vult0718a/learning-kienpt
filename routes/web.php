@@ -32,13 +32,17 @@ Route::post('login', [AuthController::class,'login'])->name('login');
 
 Route::get('logout', [AuthController::class,'logout'])->name('logout');
 
-Route::middleware('checklogin')->group(function(){
+Route::middleware('admin')->group(function(){
     Route::get('accounts',[AuthController::class,'showListAccounts'])->name('show-list-accounts');
-    Route::get('profile',[AuthController::class, 'profile'])->name('profile');
-    Route::post('edit-profile',[AuthController::class, 'editProfile'])->name('edit-profile');
     // Route::get('accounts',[AuthController::class,'addNewAccount'])->name('accounts.add');
     // Route::get('accounts',[AuthController::class,'editAccount'])->name('accounts.edit');
     // Route::get('accounts',[AuthController::class,'deleteAccount'])->name('accounts.delete');
+});
+
+Route::middleware('checklogin')->group(function(){
+    Route::get('profile',[AuthController::class, 'profile'])->name('profile');
+    Route::post('edit-profile',[AuthController::class, 'editProfile'])->name('edit-profile');
+    
     Route::get('list-products',[CategoriesController::class,'listProduct'])->name('list-products');
 
     Route::get('add-category',[CategoriesController::class, 'formAddCategory'])->name('form-add-category');
@@ -49,8 +53,10 @@ Route::middleware('checklogin')->group(function(){
 
     Route::get('add-product',[ProductController::class,'create'])->name('create-product');
     Route::post('add-product',[ProductController::class,'store'])->name('store-product');
-    
-    
+    Route::get('edit-product',[ProductController::class,'edit'])->name('edit-product');
+    Route::post('edit-product/{id}',[ProductController::class,'update'])->name('update-product');
+    Route::get('delete-product/{id}',[ProductController::class,'delete'])->name('delete-product');
+  
 });
 
 
