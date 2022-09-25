@@ -13,20 +13,38 @@
             <div class="tm-block-col tm-col-avatar">
                 <div class="tm-bg-primary-dark tm-block tm-block-avatar">
                 <h2 class="tm-block-title">Change Avatar</h2>
-                <div class="tm-avatar-container">
-                    <img
-                    src="img/avatar.png"
-                    alt="Avatar"
-                    class="tm-avatar img-fluid mb-4"
-                    />
-                    <a href="#" class="tm-avatar-delete-link">
-                    <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </a>
-                </div>
-                <button class="btn btn-primary btn-block text-uppercase">
-                    Upload New Photo
-                </button>
-                </div>
+                    <form action="{{route('upload-avatar')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="tm-avatar-container">
+                            @if(Auth::user()->avatar)
+                            <img
+                            src="{{'/storage/image/'.auth()->user()->avatar}}"
+                            alt="avatar"
+                            class="tm-avatar img-fluid mb-4"
+                            />
+                            <a href="#" class="tm-avatar-delete-link">
+                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                            </a>
+                            @else
+                            <img
+                            src="img/avatar.png"
+                            alt="avatar"
+                            class="tm-avatar img-fluid mb-4"
+                            />
+                            <a href="#" class="tm-avatar-delete-link">
+                            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                            </a>
+                            @endif
+                        </div>
+                        
+                        <div class="image form-group mt-3 mb-3">
+                            <input type="file" class="form-control" required name="image">
+                        </div>
+                        <button class="btn btn-primary btn-block text-uppercase" value="Upload">
+                            Upload New Avatar
+                        </button>
+                        </form>
+                </div>                    
             </div>
             <div class="tm-block-col tm-col-account-settings">
                 <div class="tm-bg-primary-dark tm-block tm-block-settings">
@@ -96,7 +114,7 @@
                     </div>
                     
                 </form>
-                    <div class="col-12">
+                    <div class="s col-lg-12">
                     <a href="{{route('delete-profile')}}" onclick="confirm('Bạn có chắc muốn hủy tài khoản ?') || event.stopImmediatePropagation()" ><button
                         type="submit"
                         class="btn btn-primary btn-block text-uppercase"

@@ -90,8 +90,12 @@
                     @if (Auth::check())
                     <ul class="navbar-nav">
                         <li class="nav-item" style="display:flex;">
-                            <a class="nav-link d-block" href="{{route('logout')}}">
-                            <span>{{auth()->user()->username}},</span>
+                            <span class="nav-link d-block">{{auth()->user()->username}}
+                            @if(Auth::user()->avatar)
+                            <img src="{{'/storage/image/'.auth()->user()->avatar}}" alt="avatar" class="avatar">
+                            @endif    
+                            </span>
+                            <a class="nav-link d-block" href="{{route('logout')}}">                   
                                  <b>Logout</b>
                             </a>
                         </li>
@@ -99,7 +103,7 @@
                     @else
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link d-block" href="{{route('show-form-login')}}">
+                            <a class="nav-link d-block log-out" href="{{route('show-form-login')}}">
                                 <b>Login</b>
                             </a>
                         </li>
