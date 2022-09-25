@@ -11,6 +11,6 @@ class HomeController extends Controller
     }
 
     public function listProduct(){
-        return view('products');
+        return view('list-products');
     }
 }

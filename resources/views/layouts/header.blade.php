@@ -34,7 +34,7 @@
                             </div>
                         </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('list-product')}}">
+                            <a class="nav-link" href="{{route('list-products')}}">
                                 <i class="fas fa-shopping-cart"></i>
                                 Products
                             </a>
@@ -69,8 +69,9 @@
                     </ul>
                     @if (Auth::check())
                     <ul class="navbar-nav">
-                        <li class="nav-item">{{auth()->user()->username}}
+                        <li class="nav-item" style="display:flex;">
                             <a class="nav-link d-block" href="{{route('logout')}}">
+                            <span>{{auth()->user()->username}},</span>
                                  <b>Logout</b>
                             </a>
                         </li>
@@ -79,7 +80,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link d-block" href="{{route('show-form-login')}}">
-                                <b>login</b>
+                                <b>Login</b>
                             </a>
                         </li>
                     </ul>

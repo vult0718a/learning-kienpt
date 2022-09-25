@@ -454,6 +454,7 @@ input[type="checkbox"]:focus {
 .tm-product-name {
   font-size: 0.95rem;
   font-weight: 600;
+  color: white;
 }
 .tm-product-delete-icon {
   font-size: 1.1rem;
@@ -581,6 +582,10 @@ input[type="checkbox"]:focus {
 .tm-footer-link:hover,
 .tm-footer-link:focus {
   color: #aacbea;
+}
+.nhay-dong:hover{
+  background-color: #415a70;
+  color: white;
 }
 .btn-login{
   width: 45%;
